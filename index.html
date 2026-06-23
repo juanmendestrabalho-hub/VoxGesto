@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoxGesto Pro - Reconhecimento de Sinais & Síntese de Voz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <header class="db-header">
+            <div class="header-title">
+                <span class="tag-live">SISTEMA ATIVO</span>
+                <h1>VoxGesto <span class="tech-badge">IHC Pro</span></h1>
+            </div>
+            <p>Tradução de Padrões Gestuais em Áudio via Web Speech API e Visão Computacional</p>
+        </header>
+
+        <div class="db-grid">
+            <main class="video-section">
+                <div class="stream-container">
+                    <video id="video-source" autoplay playsinline muted></video>
+                    <canvas id="tracking-canvas"></canvas>
+                    <div id="status-overlay" class="overlay">Inicializando Sensores Ópticos...</div>
+                </div>
+                
+                <div class="telemetry-deck">
+                    <div class="card-metric">
+                        <span class="label">Taxa de Varredura</span>
+                        <div class="value" id="fps-metric">0 <span class="unit">Hz</span></div>
+                    </div>
+                    <div class="card-metric">
+                        <span class="label">Precisão Relativa</span>
+                        <div class="value" id="confidence-metric">98.4%</div>
+                    </div>
+                    <div class="card-metric">
+                        <span class="label">Latência do Processador</span>
+                        <div class="value" id="ms-metric">0 <span class="unit">ms</span></div>
+                    </div>
+                </div>
+            </main>
+
+            <aside class="sidebar-section">
+                <div class="panel-box output-box">
+                    <h2>Último Gesto Traduzido</h2>
+                    <div id="speech-output" class="output-text">Aguardando padrão...</div>
+                </div>
+
+                <div class="panel-box console-box">
+                    <h2>Console de Eventos (Logs)</h2>
+                    <div id="log-stream" class="logs">
+                        <p class="system-log">[SYSTEM] Inicializando pipeline de áudio...</p>
+                    </div>
+                </div>
+
+                <div class="panel-box settings-box">
+                    <h2>Configurações do Sintetizador</h2>
+                    <div class="setting-row">
+                        <label for="voice-pitch">Tom da Voz (Pitch)</label>
+                        <input type="range" id="voice-pitch" min="0.5" max="2" step="0.1" value="1">
+                    </div>
+                    <div class="setting-row">
+                        <label for="voice-rate">Velocidade (Rate)</label>
+                        <input type="range" id="voice-rate" min="0.5" max="2" step="0.1" value="1">
+                    </div>
+                    <button id="test-audio-btn" class="btn-action">Testar Sintetizador de Voz</button>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
